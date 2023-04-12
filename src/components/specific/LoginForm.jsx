@@ -6,19 +6,27 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from '../../assets/images/banner.jpg';
+
+
 
 const PageWrapper = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   height: "100vh",
+  backgroundImage: `url(${backgroundImage})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
 });
 
 const FormWrapper = styled(Box)(({ theme }) => ({
   width: "400px",
+  height: "180px",
   padding: theme.spacing(3),
   boxShadow: "0px 10px 50px rgba(34, 60, 80, 0.2)",
-  borderRadius: "20px",
+  borderRadius: "10px",
+  backgroundColor: "#fff"
 }));
 
 const LoginForm = () => {
@@ -58,7 +66,7 @@ const LoginForm = () => {
           navigate("/home");
         } else {
           setIsLoading(false);
-          alert("Invalid username or password, please try again.");
+          alert("Username or Password Invalid, please try again!");
         }
       }, 2000);
     }
@@ -91,7 +99,7 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             error={passwordError}
-            required 
+            required
             helperText={
               passwordError
                 ? "Please enter a valid password (Minimum 8 characters length, at least 1 Capital letter, at least 1 number, at least 1 special character)."
