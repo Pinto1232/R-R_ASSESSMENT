@@ -1,9 +1,14 @@
 import React from 'react'
+import PageNotFound from '../components/specific/PageNotFound'
 
 const Unauthorized = () => {
   return (
     <div>
-       <h2>Unauthorized page</h2>
+      <PageNotFound
+        label="Image Label"
+        title="Page Not Found"
+      />
+
     </div>
   )
 }

@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from '../../assets/images/banner.jpg';
+import { useDispatch } from "react-redux";
+/* import store from "../../reducers/store";  */
 
 
 
@@ -35,12 +37,13 @@ const LoginForm = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
 
   // Use the useEffect hook to redirect to "/unauthorized" if the user tries to access another page while in the / root
-  
 
-  
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,11 +66,19 @@ const LoginForm = () => {
     }
 
     // If both fields are valid, proceed with login
+
     if (!emailError && !passwordError) {
       setIsLoading(true);
       setTimeout(() => {
         if (email === "darryn@randrtechsa.com" && password === "P@55w0rd@1") {
-          console.log("Login successful", email, password);
+          console.log("Login successful");
+          dispatch({
+            type: "LOGIN",
+            payload: {
+              email: email,
+              password: password,
+            },
+          });
           navigate("/home");
         } else {
           setIsLoading(false);

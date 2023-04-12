@@ -1,21 +1,24 @@
-import React, {  useEffect } from "react";
-import Jumbotron from '../components/specific/Jumbotron'
+import React, { useEffect } from "react";
+import Jumbotron from '../components/specific/Jumbotron';
 import image from '../assets/images/banner.jpg';
 import { useNavigate } from "react-router-dom";
-
-
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const navigate = useNavigate();
-  
+  const user = useSelector((state) => state.user || {});
+
+
+  console.log("Home User", user);
+
   // Check if user is authenticated and redirect to /unauthorized if not
   useEffect(() => {
-    const authenticated = localStorage.getItem("authenticated");
-    if (!authenticated) {
+    if (!user || !user.email || !user.password) {
       navigate("/unauthorized");
     }
-  }, [navigate]);
+  }, [navigate, user]);
   
+
   return (
     <div>
       <Jumbotron
@@ -29,4 +32,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;
