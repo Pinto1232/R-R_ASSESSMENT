@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 
 const PageWrapper = styled("div")({
@@ -25,14 +26,13 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [credentialsError, setCredentialsError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmailError(false);
     setPasswordError(false);
-    setCredentialsError(false);
 
     // Email validation
     if (!email || !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
@@ -49,12 +49,18 @@ const LoginForm = () => {
       setPasswordError(true);
     }
 
-    // Check for valid credentials
-    if (email === "darryn@randrtechsa.com" && password === "P@55w0rd@1") {
-      console.log("Login successful");
-      navigate("/home");
-    } else {
-      setCredentialsError(true);
+    // If both fields are valid, proceed with login
+    if (!emailError && !passwordError) {
+      setIsLoading(true);
+      setTimeout(() => {
+        if (email === "darryn@randrtechsa.com" && password === "P@55w0rd@1") {
+          console.log("Login successful");
+          navigate("/home");
+        } else {
+          setIsLoading(false);
+          alert("Invalid username or password, please try again.");
+        }
+      }, 2000);
     }
   };
 
@@ -92,11 +98,14 @@ const LoginForm = () => {
                 : ""
             }
           />
-          {credentialsError && (
-            <p style={{ color: "red" }}>Invalid username or password, please try again.</p>
-          )}
-          <Button variant="contained" color="primary" type="submit" fullWidth>
-            Login
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            fullWidth
+            disabled={isLoading}
+          >
+            {isLoading ? <CircularProgress size={24} /> : "Login"}
           </Button>
         </Stack>
       </FormWrapper>
