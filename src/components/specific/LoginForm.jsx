@@ -22,8 +22,7 @@ const PageWrapper = styled("div")({
 
 const FormWrapper = styled(Box)(({ theme }) => ({
   width: "400px",
-  height: "180px",
-  padding: theme.spacing(3),
+  padding: theme.spacing(4),
   boxShadow: "0px 10px 50px rgba(34, 60, 80, 0.2)",
   borderRadius: "10px",
   backgroundColor: "#fff"
@@ -36,6 +35,12 @@ const LoginForm = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+
+  // Use the useEffect hook to redirect to "/unauthorized" if the user tries to access another page while in the / root
+  
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
