@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Jumbotron from '../components/specific/Jumbotron'
-import image from '../assets/images/banner.jpg'
+import image from '../assets/images/account_banner.jpg'
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Grid, Paper, Typography } from '@mui/material';
@@ -43,8 +43,8 @@ const Account = () => {
           margin: '40px',
           textAlign: 'center'
         }}>
-          <Typography variant="h5"
-            style={{ marginBottom: '10px' }}>
+          <Typography variant="h5" 
+          style={{ marginBottom: '10px' }}>
             Account Details:
           </Typography>
           <Grid container spacing={2}
