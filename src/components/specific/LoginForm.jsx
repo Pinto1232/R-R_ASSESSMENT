@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
+import { useNavigate } from "react-router-dom";
 
 const PageWrapper = styled("div")({
   display: "flex",
@@ -24,11 +25,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [credentialsError, setCredentialsError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmailError(false);
     setPasswordError(false);
+    setCredentialsError(false);
 
     // Email validation
     if (!email || !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
@@ -45,10 +49,12 @@ const LoginForm = () => {
       setPasswordError(true);
     }
 
-    // If both fields are valid, proceed with login
-    if (!emailError && !passwordError) {
+    // Check for valid credentials
+    if (email === "darryn@randrtechsa.com" && password === "P@55w0rd@1") {
       console.log("Login successful");
-      // Add your login logic here
+      navigate("/home");
+    } else {
+      setCredentialsError(true);
     }
   };
 
@@ -67,6 +73,7 @@ const LoginForm = () => {
             helperText={
               emailError ? "Please enter a valid email address." : ""
             }
+            required
           />
           <TextField
             id="outlined-password-input"
@@ -78,12 +85,16 @@ const LoginForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             error={passwordError}
+            required 
             helperText={
               passwordError
                 ? "Please enter a valid password (Minimum 8 characters length, at least 1 Capital letter, at least 1 number, at least 1 special character)."
                 : ""
             }
           />
+          {credentialsError && (
+            <p style={{ color: "red" }}>Invalid username or password, please try again.</p>
+          )}
           <Button variant="contained" color="primary" type="submit" fullWidth>
             Login
           </Button>
