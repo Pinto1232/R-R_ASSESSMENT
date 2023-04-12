@@ -67,7 +67,7 @@ const LoginForm = () => {
       setIsLoading(true);
       setTimeout(() => {
         if (email === "darryn@randrtechsa.com" && password === "P@55w0rd@1") {
-          console.log("Login successful");
+          console.log("Login successful", email, password);
           navigate("/home");
         } else {
           setIsLoading(false);
