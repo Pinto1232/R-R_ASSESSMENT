@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import '../../assets/styles/global.css';
+import menuLinks from '../../Data/NavLinks'
 import {
   AppBar,
   Toolbar,
@@ -22,14 +23,9 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const Navbar = () => {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
-
-  const menuLinks = [
-    { text: '', path: '/page-not-found' },
-    { text: 'Home', path: '/' },
-    { text: 'Account', path: '/account' },
-    { text: 'Login', path: '/login' },
-  ];
+  console.log("Navegation Data", menuLinks);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -39,11 +35,15 @@ const Navbar = () => {
     setOpen(false);
   };
 
+  if (location.pathname === '/') {
+    return null; // Don't show Navbar on root URL
+  }
+
   return (
     <AppBar position="static" style={{ backgroundColor: '#000' }}>
       <Toolbar>
         <Link to="/">
-          <img src={Logo} alt="Logo" style={{width: "30%" }} />
+          <img src={Logo} alt="Logo" style={{ width: "30%" }} />
         </Link>
         <StyledIconButton
           edge="start"
@@ -70,9 +70,19 @@ const Navbar = () => {
             <Link
               to={link.path}
               key={link.text}
-              style={{ margin: '0px 10px', textDecoration: 'none', color: '#fff'}}
+              style={{
+                margin: '0px 10px',
+                textDecoration: 'none',
+                color: '#fff'
+              }}
             >
-              <ListItemText sx={{ textDecoration: 'none', fontSize: '25px'  }} primary={link.text} />
+              <ListItemText
+                sx={{
+                  textDecoration: 'none',
+                  fontSize: '25px'
+                }}
+                primary={link.text}
+              />
             </Link>
           ))}
         </div>
