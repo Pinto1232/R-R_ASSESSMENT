@@ -29,13 +29,29 @@ const Jumbotron = ({ title, subtitle, buttonText, buttonLink, image }) => {
   return (
     <JumbotronContainer image={image}>
       <Overlay>
-        <Typography variant="h3" color="white" gutterBottom>
+        <Typography
+          variant="h3"
+          color="white"
+          gutterBottom
+          width={900}
+          textAlign="center"
+        >
           {title}
         </Typography>
-        <Typography variant="subtitle1" color="white" gutterBottom>
+        <Typography
+          variant="subtitle1"
+          color="white"
+          gutterBottom
+          fontSize={20}
+        >
           {subtitle}
         </Typography>
-        <Button variant="contained" color="primary" href={buttonLink}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ backgroundColor: "black", width: "230px", padding: "10px" }}
+          href={buttonLink}
+        >
           {buttonText}
         </Button>
       </Overlay>

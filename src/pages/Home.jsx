@@ -6,8 +6,8 @@ const Home = () => {
   return (
     <div>
       <Jumbotron
-        title="Welcome to my website"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        title="Revolutionizing the Future: A Cutting-Edge Solution for R&R Tech"
+        subtitle="Revolutionize your social media presence with our new AI-powered platform"
         buttonText="Learn More"
         buttonLink="/about"
         image={image}

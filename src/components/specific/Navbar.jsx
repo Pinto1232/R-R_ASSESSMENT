@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../assets/styles/global.css'
+import '../../assets/styles/global.css';
 import {
   AppBar,
   Toolbar,
@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
+import Logo from '../../assets/images/logo.png'
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   marginRight: theme.spacing(2),
@@ -39,8 +40,11 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" style={{ backgroundColor: "#000"}}>
+    <AppBar position="static" style={{ backgroundColor: '#000' }}>
       <Toolbar>
+        <Link to="/">
+          <img src={Logo} alt="Logo" style={{width: "30%" }} />
+        </Link>
         <StyledIconButton
           edge="start"
           color="inherit"
@@ -53,7 +57,7 @@ const Navbar = () => {
           <List>
             {menuLinks.map((link) => (
               <ListItem key={link.text}>
-                <Link to={link.path} >
+                <Link to={link.path}>
                   <ListItemText primary={link.text} />
                 </Link>
               </ListItem>
@@ -66,9 +70,9 @@ const Navbar = () => {
             <Link
               to={link.path}
               key={link.text}
-              style={{ margin: '0px 10px', textDecoration: 'none', color: '#fff' }}
+              style={{ margin: '0px 10px', textDecoration: 'none', color: '#fff'}}
             >
-              <ListItemText sx={{ textDecoration: 'none' }}  primary={link.text} />
+              <ListItemText sx={{ textDecoration: 'none', fontSize: '25px'  }} primary={link.text} />
             </Link>
           ))}
         </div>
