@@ -34,7 +34,8 @@ const Jumbotron = ({ title, subtitle, buttonText, buttonLink, image }) => {
           color="white"
           gutterBottom
           width={900}
-          textAlign="center">
+          textAlign="center"
+        >
           {title}
         </Typography>
         <Typography
