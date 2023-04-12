@@ -1,5 +1,5 @@
 const menuLinks = [
-    { text: '', path: '/page-not-found' },
+    { text: '', path: '/unauthorized’' },
     { text: 'Home', path: '/home' },
     { text: 'Account', path: '/account' },
     { text: 'Login', path: '/' },

@@ -1,8 +1,7 @@
 import React from 'react'
 import Jumbotron from '../components/specific/Jumbotron'
 import image from '../assets/images/banner.jpg';
-import TreeColumnsGrid from '../components/common/TreeColumnGrid';
-import { Grid } from '@mui/material';
+
 
 const Home = () => {
   return (
@@ -14,12 +13,6 @@ const Home = () => {
         buttonLink="/about"
         image={image}
       />
-
-      <TreeColumnsGrid>
-        <Grid>Column 1 content</Grid>
-        <Grid>Column 2 content</Grid>
-        <Grid>Column 3 content</Grid>
-      </TreeColumnsGrid>
     </div>
   )
 }

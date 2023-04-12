@@ -16,7 +16,7 @@ function App() {
         <Route path="/home" element={ <Home/> } />
         <Route path="/" element={ <Login /> } />
         <Route path="account" element={ <Account/> } />
-        <Route path="page-not-found" element={ <Unauthorized />} />
+        <Route path="unauthorized’" element={ <Unauthorized />} />
       </Routes>
       <Footer/>
     </div>
