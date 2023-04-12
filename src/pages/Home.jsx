@@ -1,9 +1,17 @@
 import React from 'react'
+import Jumbotron from '../components/specific/Jumbotron'
+import image from '../assets/images/banner.jpg';
 
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <Jumbotron
+        title="Welcome to my website"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        buttonText="Learn More"
+        buttonLink="/about"
+        image={image}
+      />
     </div>
   )
 }

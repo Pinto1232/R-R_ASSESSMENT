@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../../assets/styles/global.css'
 import {
   AppBar,
   Toolbar,
@@ -23,9 +24,10 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const menuLinks = [
+    { text: '', path: '/page-not-found' },
     { text: 'Home', path: '/' },
-    { text: 'About', path: '/about' },
-    { text: 'Contact', path: '/contact' },
+    { text: 'Account', path: '/account' },
+    { text: 'Login', path: '/login' },
   ];
 
   const handleDrawerOpen = () => {
@@ -37,7 +39,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: "#000"}}>
       <Toolbar>
         <StyledIconButton
           edge="start"
@@ -50,8 +52,8 @@ const Navbar = () => {
         <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
           <List>
             {menuLinks.map((link) => (
-              <ListItem button key={link.text}>
-                <Link to={link.path}>
+              <ListItem key={link.text}>
+                <Link to={link.path} >
                   <ListItemText primary={link.text} />
                 </Link>
               </ListItem>
@@ -64,9 +66,9 @@ const Navbar = () => {
             <Link
               to={link.path}
               key={link.text}
-              style={{ margin: '0px 10px' }}
+              style={{ margin: '0px 10px', textDecoration: 'none', color: '#fff' }}
             >
-              <ListItemText primary={link.text} />
+              <ListItemText sx={{ textDecoration: 'none' }}  primary={link.text} />
             </Link>
           ))}
         </div>
