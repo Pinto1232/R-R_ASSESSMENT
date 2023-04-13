@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
@@ -8,7 +10,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { useNavigate } from "react-router-dom";
 import backgroundImage from '../../assets/images/banner.jpg';
 import { useDispatch } from "react-redux";
-/* import store from "../../reducers/store";  */
+import useUserValidationForm from "../../hooks/useUserValidationForm";
+
 
 
 
@@ -31,20 +34,24 @@ const FormWrapper = styled(Box)(({ theme }) => ({
 }));
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const {
+    email,
+    password,
+    emailError,
+    passwordError,
+    handleEmailChange,
+    handlePasswordChange,
+    setEmailError,
+    setPasswordError
+  } = useUserValidationForm();
 
-  // Use the useEffect hook to redirect to "/unauthorized" if the user tries to access another page while in the / root
 
 
-
-
+  // Function that setup the hardcode email and password
   const handleSubmit = (e) => {
     e.preventDefault();
     setEmailError(false);
@@ -66,7 +73,6 @@ const LoginForm = () => {
     }
 
     // If both fields are valid, proceed with login
-
     if (!emailError && !passwordError) {
       setIsLoading(true);
       setTimeout(() => {
@@ -88,6 +94,7 @@ const LoginForm = () => {
     }
   };
 
+
   return (
     <PageWrapper>
       <FormWrapper component="form" onSubmit={handleSubmit}>
@@ -98,30 +105,30 @@ const LoginForm = () => {
             variant="outlined"
             fullWidth
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
             error={emailError}
+            required
             helperText={
               emailError ? "Please enter a valid email address." : ""
             }
-            required
           />
+
           <TextField
-            id="outlined-password-input"
+            id="outlined-basic"
             label="Password"
-            type="password"
-            autoComplete="current-password"
             variant="outlined"
             fullWidth
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            error={passwordError}
+            onChange={handlePasswordChange}
             required
+            error={passwordError}
             helperText={
               passwordError
                 ? "Please enter a valid password (Minimum 8 characters length, at least 1 Capital letter, at least 1 number, at least 1 special character)."
                 : ""
             }
           />
+
           <Button
             variant="contained"
             color="primary"

@@ -2,7 +2,7 @@ const menuLinks = [
     { text: '', path: '/unauthorized' },
     { text: 'Home', path: '/home' },
     { text: 'Account', path: '/account' },
-    { text: 'Login', path: '/' },
+    { text: 'Log out', path: '/' },
 ];
 
 export default menuLinks;
