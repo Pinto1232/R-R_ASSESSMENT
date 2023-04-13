@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import backgroundImage from '../../assets/images/banner.jpg';
 import { useDispatch } from "react-redux";
 import useUserValidationForm from "../../hooks/useUserValidationForm";
+import logoImage from "../../assets/images/logo2.png";
+
 
 
 
@@ -32,6 +34,21 @@ const FormWrapper = styled(Box)(({ theme }) => ({
   borderRadius: "10px",
   backgroundColor: "#fff"
 }));
+
+const LogoWrapper = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  marginBottom: "32px",
+});
+
+const LogoImage = styled("img")({
+  width: "100px",
+  height: "98px",
+  borderRadius: "55px",
+  backgroundSize: "cover",
+  backgroundPosition: "center"
+});
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -96,51 +113,54 @@ const LoginForm = () => {
 
 
   return (
-    <PageWrapper>
-      <FormWrapper component="form" onSubmit={handleSubmit}>
-        <Stack spacing={2}>
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            variant="outlined"
-            fullWidth
-            value={email}
-            onChange={handleEmailChange}
-            error={emailError}
-            required
-            helperText={
-              emailError ? "Please enter a valid email address." : ""
-            }
-          />
+      <PageWrapper>
+        <FormWrapper component="form" onSubmit={handleSubmit}>
+        <LogoWrapper>
+        <LogoImage src={logoImage} alt="Logo" />
+      </LogoWrapper>
+          <Stack spacing={2}>
+            <TextField
+              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={email}
+              onChange={handleEmailChange}
+              error={emailError}
+              required
+              helperText={
+                emailError ? "Please enter a valid email address." : ""
+              }
+            />
 
-          <TextField
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            fullWidth
-            value={password}
-            onChange={handlePasswordChange}
-            required
-            error={passwordError}
-            helperText={
-              passwordError
-                ? "Please enter a valid password (Minimum 8 characters length, at least 1 Capital letter, at least 1 number, at least 1 special character)."
-                : ""
-            }
-          />
+            <TextField
+              id="outlined-basic"
+              label="Password"
+              variant="outlined"
+              fullWidth
+              value={password}
+              onChange={handlePasswordChange}
+              required
+              error={passwordError}
+              helperText={
+                passwordError
+                  ? "Please enter a valid password (Minimum 8 characters length, at least 1 Capital letter, at least 1 number, at least 1 special character)."
+                  : ""
+              }
+            />
 
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            fullWidth
-            disabled={isLoading}
-          >
-            {isLoading ? <CircularProgress size={24} /> : "Login"}
-          </Button>
-        </Stack>
-      </FormWrapper>
-    </PageWrapper>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              fullWidth
+              disabled={isLoading}
+            >
+              {isLoading ? <CircularProgress size={24} /> : "Login"}
+            </Button>
+          </Stack>
+        </FormWrapper>
+      </PageWrapper>
   );
 };
 
