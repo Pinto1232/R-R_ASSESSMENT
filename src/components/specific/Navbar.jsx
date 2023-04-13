@@ -25,7 +25,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 const Navbar = () => {
   const location = useLocation();
   const [open, setOpen] = useState(false);
-  console.log("Navegation Data", menuLinks);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
