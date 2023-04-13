@@ -43,8 +43,8 @@ const Account = () => {
           margin: '40px',
           textAlign: 'center'
         }}>
-          <Typography variant="h5" 
-          style={{ marginBottom: '10px' }}>
+          <Typography variant="h5"
+            style={{ marginBottom: '10px' }}>
             Account Details:
           </Typography>
           <Grid container spacing={2}

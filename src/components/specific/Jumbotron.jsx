@@ -25,6 +25,9 @@ const Overlay = styled(Box)({
   justifyContent: 'center',
 });
 
+
+
+
 const Jumbotron = ({ title, subtitle, buttonText, buttonLink, image }) => {
   return (
     <JumbotronContainer image={image}>
@@ -33,7 +36,15 @@ const Jumbotron = ({ title, subtitle, buttonText, buttonLink, image }) => {
           variant="h3"
           color="white"
           gutterBottom
-          width={900}
+          sx={{
+            textAlign: 'center',
+            maxWidth: '900px',
+            margin: '0 auto',
+            '@media (max-width: 600px)': {
+              fontSize: '2rem',
+              maxWidth: '80%',
+            },
+          }}
           textAlign="center"
         >
           {title}
@@ -42,7 +53,16 @@ const Jumbotron = ({ title, subtitle, buttonText, buttonLink, image }) => {
           variant="subtitle1"
           color="white"
           gutterBottom
-          fontSize={20}
+          sx={{
+            textAlign: 'center',
+            maxWidth: '900px',
+            margin: '0 auto',
+            '@media (max-width: 600px)': {
+              fontSize: "20px",
+              maxWidth: '80%',
+            },
+          }}
+          textAlign="center"
         >
           {subtitle}
         </Typography>

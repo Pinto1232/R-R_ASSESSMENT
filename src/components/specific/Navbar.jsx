@@ -51,7 +51,7 @@ const Navbar = () => {
           aria-label="menu"
           onClick={handleDrawerOpen}
         >
-          <Menu />
+        <Menu />
         </StyledIconButton>
         <Drawer anchor="left" open={open} onClose={handleDrawerClose}>
           <List>
@@ -65,7 +65,7 @@ const Navbar = () => {
           </List>
         </Drawer>
         <div style={{ flexGrow: 1 }} />
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex',  whiteSpace: 'nowrap' }}>
           {menuLinks.map((link) => (
             <Link
               to={link.path}
