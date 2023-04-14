@@ -22,10 +22,6 @@ const {
 } = GlobalStyles();
 
 const LoginForm = () => {
-  /* const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false); */
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,8 +39,6 @@ const LoginForm = () => {
 
   } = useUserValidationData();
 
-  console.log("Loggeed");
-
 
   // HandleSubmit function
   const handleSubmit = (e) => {
@@ -58,8 +52,6 @@ const LoginForm = () => {
       setEmailError(false);
     }
 
-
-
     // Password validation
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     if (!password || !passwordRegex.test(password)) {
@@ -68,9 +60,7 @@ const LoginForm = () => {
       setPasswordError(false);
     }
 
-
     // If both fields are valid, proceed with login
-
     if (!emailError && !passwordError) {
       setIsLoading(true);
       setTimeout(() => {
@@ -143,5 +133,4 @@ const LoginForm = () => {
     </PageWrapper>
   );
 };
-
 export default LoginForm;
