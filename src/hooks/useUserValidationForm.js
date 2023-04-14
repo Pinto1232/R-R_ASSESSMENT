@@ -5,14 +5,16 @@ const useUserValidationForm = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
-  };
+  }
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
-  };
+  }
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -41,7 +43,7 @@ const useUserValidationForm = () => {
     handlePasswordChange,
     handleSubmit,
     setEmailError,
-    setPasswordError 
+    setPasswordError
   };
 };
 
