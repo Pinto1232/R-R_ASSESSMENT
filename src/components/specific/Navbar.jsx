@@ -59,11 +59,6 @@ const Navbar = () => {
               <ListItem key={link.text}>
                 <Link to={link.path}>
                   <ListItemText
-                  sx={{
-                    '@media (max-width: 768px)': {
-                      display: 'none',
-                    },
-                  }}
                   primary={link.text} />
                 </Link>
               </ListItem>
@@ -80,6 +75,11 @@ const Navbar = () => {
                 margin: '0px 10px',
                 textDecoration: 'none',
                 color: '#fff'
+              }}
+              sx={{
+                '@media (max-width: 768px)': {
+                  display: 'none',
+                },
               }}
             >
               <ListItemText
