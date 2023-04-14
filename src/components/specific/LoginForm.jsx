@@ -93,12 +93,12 @@ const LoginForm = () => {
             <TextField
               id="outlined-basic"
               label="Email"
-              variant="outlined"
+              variant="standard" 
               fullWidth
               value={email}
               onChange={handleEmailChange}
               error={emailError}
-              required
+              required 
               helperText={
                 emailError ? "Please enter a valid email address." : ""
               }
@@ -107,7 +107,7 @@ const LoginForm = () => {
             <TextField
               id="outlined-basic"
               label="Password"
-              variant="outlined"
+              variant="standard" 
               fullWidth
               value={password}
               onChange={handlePasswordChange}
