@@ -58,7 +58,13 @@ const Navbar = () => {
             {menuLinks.map((link) => (
               <ListItem key={link.text}>
                 <Link to={link.path}>
-                  <ListItemText primary={link.text} />
+                  <ListItemText
+                  sx={{
+                    '@media (max-width: 768px)': {
+                      display: 'none',
+                    },
+                  }}
+                  primary={link.text} />
                 </Link>
               </ListItem>
             ))}
